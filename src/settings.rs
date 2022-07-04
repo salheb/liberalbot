@@ -20,7 +20,7 @@ pub struct Settings {
 
 impl Settings {
     pub fn new() -> Result<Self, ConfigError> {
-        return get_config(get_run_mode());
+        return load_config_params(get_run_mode());
     }
 }
 
@@ -37,7 +37,7 @@ fn get_run_mode() -> String{
     return run_mode.to_string();
 }
 
-fn get_config(app_run_mode: String) -> Result<Settings, ConfigError>{
+fn load_config_params(app_run_mode: String) -> Result<Settings, ConfigError>{
     let s;
 
     if app_run_mode == "dev"{
